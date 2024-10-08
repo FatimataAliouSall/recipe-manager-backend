@@ -1,4 +1,4 @@
-## gestion-recette-api-express
+## gestion des recettes 
 
 Ceci est l'API backend pour l'application de gestion de recettes, développée avec Express.js. Elle fournit une interface RESTful pour gérer les recettes, permettant de créer, lire, mettre à jour et supprimer des recettes dans une base de données. L'API est conçue pour être consommée par le frontend afin de gérer les opérations sur les recettes.
 
@@ -6,7 +6,7 @@ Ceci est l'API backend pour l'application de gestion de recettes, développée a
 
 - Node.js (version 18 ou supérieure)
 - MySQL (version 8 ou supérieure)
-- Docker (version 20 ou supérieure)
+- Postman (pour tester l'API)
 
 ## Mise en place du projet
 
@@ -15,8 +15,8 @@ Pour configurer le projet, suivez ces étapes :
 1. Cloner le dépôt :
 
 ```bash
-   git clone https://github.com/FatimataAliouSall/gestion-recette-api-express.git
-   cd gestion-recette-api-express
+   git clone https://github.com/FatimataAliouSall/recipe-manager-backend.git
+   cd recipe-manager-backend
 ```
 
 2. Installer les dépendances :
@@ -31,75 +31,156 @@ Pour configurer le projet, suivez ces étapes :
   npm start
 ```
 
-4. Créez un fichier .env à la racine du projet et configurez les variables d'environnement pour la connexion à la base de données :
+4.Créez une copie du fichier `.env.example` puis renommer le fichier en `.env` à la racine du projet et mettez vos information pour configuration de la connexion à la base de données :
 
 ```bash
     DB_HOST=localhost
-    DB_USER=root
-    DB_PASSWORD=your-password
-    DB_NAME=recipes_management
+    DB_USER=
+    DB_PASSWORD=
+    DB_NAME=recipes_mangement
     PORT=3090
+    DB_PORT=3306
+    MYSQL_DATABASE=recipes_mangement
+    MYSQL_ROOT_PASSWORD=
 ```
 
-L'API sera accessible à l'adresse http://localhost:3090.
+L'API sera accessible à l'adresse http://localhost:3090
 
 ## Endpoints de l'API
+
+- Recette
 
 1. Créer une recette
 
 - Méthode : POST
-- Endpoint : /api/recipes
+- Endpoint : /recipes/add
 - Description : Ajoute une nouvelle recette dans la base de données.
+- corps : 
+ ```bash
+  {
+        "title": "Chocolate Delia",
+        "ingredient": "Flour, Sugar, Cocoa, Eggs, Milk",
+        "type": "Baking",
+        "categorie_id": 1
+ }
+
+```
+- Réponse :
+```bash
+ "message": "Recette ajoutée avec succès",
+```
+
 
 2. Obtenir toutes les recettes
 
 - Méthode : GET
-- Endpoint : /api/recipes
+- Endpoint : /recipes
 - Description : Récupère toutes les recettes de la base de données.
+- Réponse :
+```bash
+ {
+        "id": 1,
+        "title": "Chocolate Sugar",
+        "ingredient": "Flour, Sugar, Cocoa, Eggs, Milk",
+        "type": "Baking",
+        "categorie_id": 1
+    },
+```
 
-3. Obtenir une recette par ID
 
-- Méthode : GET
-- Endpoint : /api/recipes/:id
-- Description : Récupère une recette par son ID.
-
-4. Mettre à jour une recette
+3. Mettre à jour une recette
 
 - Méthode : PUT
 - Endpoint : /api/recipes/edit/:id
 - Description : Met à jour une recette par son ID.
+- Corps :
 
-5. Supprimer une recette.
+ ```bash
+  {
+        "title": "Chocolate Cocoa",
+        "ingredient": "Flour, Sugar, Cocoa, Eggs, Milk",
+        "type": "Baking",
+        "categorie_id": 1
+ }
+
+```
+- Réponse :
+```bash
+ "message": "Recette Mise à jour avec succès",
+```
+
+
+4. Supprimer une recette.
 
 - Méthode : DELETE
-- Endpoint : /api/recipes/delete/:id
+- Endpoint : /recipes/delete/:id
 - Description : Supprime une recette par son ID.
-
-## Conteneurisation et déploiement.
-
-1. Construire l'image Docker :
-
+- Réponse :
 ```bash
-  docker build -t votre-nom-utilisateur/nom_image-management-recipe .
+ "message": "Recette supprimée avec succès",
+```
+- Catégorie
+
+1. Créer une catégorie
+
+- Méthode : POST
+- Endpoint : /categories/add
+- Description : Ajoute une nouvelle catégorie dans la base de données.
+- corps : 
+ ```bash
+  {
+        
+        "nom": "rouil"
+    }
+
+```
+- Réponse :
+```bash
+ "message": "catégorie ajoutée avec succès",
 ```
 
-2. Tag l'image docker :
+2. Obtenir toutes les catégories
 
+- Méthode : GET
+- Endpoint : /categories
+- Description : Récupère toutes les categories de la base de données.
+- Réponse :
 ```bash
-  docker tag <image-id> votre-nom-utilisateur/nom_image-management-recipe
+ {
+        "id": 1,
+        "name": "Dessert"
+    },
 ```
 
-3. Déployer l'image sur Docker Hub :
+3. Mettre à jour une catégorie
 
+- Méthode : PUT
+- Endpoint : /categories/edit/:id
+- Description : Met à jour une catégorie par son ID.
+- Corps :
+
+ ```bash
+  {
+    
+        "nom": "plat"
+    }
+
+```
+- Réponse :
 ```bash
-  docker push votre-nom-utilisateur/nom_image-management-recipe
+ "message": "catégorie Mise à jour avec succès",
 ```
 
-3. Démarrer l'application conteneurisée avec Docker Compose :
+4. Supprimer une catégorie.
 
+- Méthode : DELETE
+- Endpoint : /catégories/delete/:id
+- Description : Supprime une catégorie par son ID.
+- Réponse :
 ```bash
-  docker-compose up -d
+ "message": "catégorie supprimée avec succès",
 ```
+
 
 ## Tests
 
@@ -109,11 +190,25 @@ Les tests unitaires sont écrits avec Jasmine. Pour les exécuter, utilisez la c
   npm test
 ```
 
-## Configuration de la base de données
+## Analyse et formatage de code
 
-La connexion à la base de données est configurée manuellement sans utiliser d'ORM. Pour configurer la base de données, créez une base MySQL nommée gestion_recettes, puis modifiez les informations de connexion tellesques DB_HOST, DB_USER, DB_PASS, DB_NAME dans le fichier ./env .
+Ce projet utilise **ESLint** pour le linting du code et **Prettier** pour le formatage. Cela permet de garantir que le code respecte des normes de qualité et de style cohérentes.
+
+- Eslint
+
+```bash
+npm run lint:fix
+```
+
+- Prettier
+
+```bash
+npm run format
+```
+
+
 
 ## Auteurs
 
 - **[Fatimata Aliou Sall](https://github.com/fatimata-sall)** - Développeuse Full Stack
-- **[Mohamed Soumare](https://github.com/MohamedSoumare)** - Développeur Full Stack
+
