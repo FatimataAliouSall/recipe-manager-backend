@@ -3,10 +3,12 @@ import Category from '../models/CategorieModel.js';
 class CategoryRecipeController {
   static async getCategories(req, res) {
     try {
-      const categories = await Category.getAll(); 
+      const categories = await Category.getAll();
       res.json(categories);
     } catch (error) {
-      res.status(500).json({ message: 'Erreur lors de la récupération des catégories.' });
+      res
+        .status(500)
+        .json({ message: 'Erreur lors de la récupération des catégories.' });
     }
   }
 
@@ -20,7 +22,9 @@ class CategoryRecipeController {
         res.status(404).json({ message: 'Catégorie non trouvée.' });
       }
     } catch (error) {
-      res.status(500).json({ message: 'Erreur lors de la récupération de la catégorie.' });
+      res
+        .status(500)
+        .json({ message: 'Erreur lors de la récupération de la catégorie.' });
     }
   }
 
@@ -33,7 +37,9 @@ class CategoryRecipeController {
         id: newCategorie.insertId,
       });
     } catch (error) {
-      res.status(500).json({ message: 'Erreur lors de l\'ajout de la catégorie.' });
+      res
+        .status(500)
+        .json({ message: 'Erreur lors de lajout de la catégorie.' });
     }
   }
 
@@ -49,7 +55,9 @@ class CategoryRecipeController {
         res.status(404).json({ message: 'Catégorie non trouvée.' });
       }
     } catch (error) {
-      res.status(500).json({ message: 'Erreur lors de la modification de la catégorie.' });
+      res
+        .status(500)
+        .json({ message: 'Erreur lors de la modification de la catégorie.' });
     }
   }
 
@@ -64,7 +72,9 @@ class CategoryRecipeController {
         res.status(404).json({ message: 'Catégorie non trouvée.' });
       }
     } catch (error) {
-      res.status(500).json({ message: 'Erreur lors de la suppression de la catégorie.' });
+      res
+        .status(500)
+        .json({ message: 'Erreur lors de la suppression de la catégorie.' });
     }
   }
 }

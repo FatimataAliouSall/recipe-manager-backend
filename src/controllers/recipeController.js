@@ -10,7 +10,7 @@ class RecipeController {
       res.status(500).json({ message: 'Erreur serveur' });
     }
   }
-  
+
   static async getRecipeById(req, res) {
     const { id } = req.params;
     try {
@@ -49,11 +49,21 @@ class RecipeController {
         return res.status(400).json({ message: 'Catégorie non trouvée' });
       }
 
-      const result = await Recipe.create({ title, type, ingredient, categorie_id });
-      res.status(201).json({ message: 'Recette créée avec succès', recipe: result });
+      const result = await Recipe.create({
+        title,
+        type,
+        ingredient,
+        categorie_id,
+      });
+      res
+        .status(201)
+        .json({ message: 'Recette créée avec succès', recipe: result });
     } catch (error) {
       console.error('Erreur dans addRecipe:', error);
-      res.status(500).json({ message: 'Erreur lors de la création de la recette', error: error.message });
+      res.status(500).json({
+        message: 'Erreur lors de la création de la recette',
+        error: error.message,
+      });
     }
   }
 
@@ -69,7 +79,9 @@ class RecipeController {
       res.status(200).json({ message: 'Recette supprimée avec succès' });
     } catch (error) {
       console.error('Erreur dans deleteRecipe:', error);
-      res.status(500).json({ message: 'Erreur lors de la suppression de la recette' });
+      res
+        .status(500)
+        .json({ message: 'Erreur lors de la suppression de la recette' });
     }
   }
 }

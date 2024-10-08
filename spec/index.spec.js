@@ -7,7 +7,7 @@ describe('Recipe tests', () => {
 
   it('can be created', async () => {
     const recipe = {
-      title: 'crepe',
+      title: 'crepe house',
       type: 'dessert',
       ingredient: 'farine',
       categorie_id,
@@ -32,7 +32,7 @@ describe('Recipe tests', () => {
       await Recipe.create(recipe);
       fail('Expected an error to be thrown');
     } catch (error) {
-      console.log(error.message);
+      // console.log(error.message);
       // expect(error).toBeDefined();
     }
   });
@@ -46,7 +46,7 @@ describe('Recipe tests', () => {
   it('update a recipe with its category', async () => {
     expect(recipeId).not.toBeNull(); 
     const updatedData = {
-      title: 'Crêpe mise à jour',
+      title: 'Crêpe mise à jour 1',
       type: 'Dessert',
       ingredient: 'Ingrédients mis à jour',
       categorie_id,
@@ -74,7 +74,7 @@ describe('Category Model Tests', () => {
   let categoryId = null;
 
   it('should create a category successfully', async () => {
-    const categoryName = 'Entrée';
+    const categoryName = 'category';
     const result = await Category.create(categoryName);
     categoryId = result.insertId;
 
@@ -115,7 +115,7 @@ describe('Category Model Tests', () => {
       await Category.delete(linkedCategoryId);
       fail('Expected a foreign key constraint error');
     } catch (error) {
-      console.log(error.message);
+      // console.log(error.message);
       // expect(error.code).toBe('ER_ROW_IS_REFERENCED_2');
     }
   });
