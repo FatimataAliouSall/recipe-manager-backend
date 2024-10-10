@@ -1,4 +1,4 @@
-## gestion des recettes 
+## gestion des recettes
 
 Ceci est l'API backend pour l'application de gestion de recettes, développée avec Express.js. Elle fournit une interface RESTful pour gérer les recettes, permettant de créer, lire, mettre à jour et supprimer des recettes dans une base de données. L'API est conçue pour être consommée par le frontend afin de gérer les opérations sur les recettes.
 
@@ -55,21 +55,23 @@ L'API sera accessible à l'adresse http://localhost:3090
 - Méthode : POST
 - Endpoint : /recipes/add
 - Description : Ajoute une nouvelle recette dans la base de données.
-- corps : 
- ```bash
-  {
-        "title": "Chocolate Delia",
-        "ingredient": "Flour, Sugar, Cocoa, Eggs, Milk",
-        "type": "Baking",
-        "categorie_id": 1
- }
+- corps :
+
+```bash
+ {
+       "title": "Chocolate Delia",
+       "ingredient": "Flour, Sugar, Cocoa, Eggs, Milk",
+       "type": "Baking",
+       "categorie_id": 1
+}
 
 ```
+
 - Réponse :
+
 ```bash
  "message": "Recette ajoutée avec succès",
 ```
-
 
 2. Obtenir toutes les recettes
 
@@ -77,6 +79,7 @@ L'API sera accessible à l'adresse http://localhost:3090
 - Endpoint : /recipes
 - Description : Récupère toutes les recettes de la base de données.
 - Réponse :
+
 ```bash
  {
         "id": 1,
@@ -87,7 +90,6 @@ L'API sera accessible à l'adresse http://localhost:3090
     },
 ```
 
-
 3. Mettre à jour une recette
 
 - Méthode : PUT
@@ -95,20 +97,21 @@ L'API sera accessible à l'adresse http://localhost:3090
 - Description : Met à jour une recette par son ID.
 - Corps :
 
- ```bash
-  {
-        "title": "Chocolate Cocoa",
-        "ingredient": "Flour, Sugar, Cocoa, Eggs, Milk",
-        "type": "Baking",
-        "categorie_id": 1
- }
+```bash
+ {
+       "title": "Chocolate Cocoa",
+       "ingredient": "Flour, Sugar, Cocoa, Eggs, Milk",
+       "type": "Baking",
+       "categorie_id": 1
+}
 
 ```
+
 - Réponse :
+
 ```bash
  "message": "Recette Mise à jour avec succès",
 ```
-
 
 4. Supprimer une recette.
 
@@ -116,9 +119,11 @@ L'API sera accessible à l'adresse http://localhost:3090
 - Endpoint : /recipes/delete/:id
 - Description : Supprime une recette par son ID.
 - Réponse :
+
 ```bash
  "message": "Recette supprimée avec succès",
 ```
+
 - Catégorie
 
 1. Créer une catégorie
@@ -126,15 +131,18 @@ L'API sera accessible à l'adresse http://localhost:3090
 - Méthode : POST
 - Endpoint : /categories/add
 - Description : Ajoute une nouvelle catégorie dans la base de données.
-- corps : 
- ```bash
-  {
-        
-        "nom": "rouil"
-    }
+- corps :
+
+```bash
+ {
+
+       "nom": "rouil"
+   }
 
 ```
+
 - Réponse :
+
 ```bash
  "message": "catégorie ajoutée avec succès",
 ```
@@ -145,6 +153,7 @@ L'API sera accessible à l'adresse http://localhost:3090
 - Endpoint : /categories
 - Description : Récupère toutes les categories de la base de données.
 - Réponse :
+
 ```bash
  {
         "id": 1,
@@ -159,14 +168,16 @@ L'API sera accessible à l'adresse http://localhost:3090
 - Description : Met à jour une catégorie par son ID.
 - Corps :
 
- ```bash
-  {
-    
-        "nom": "plat"
-    }
+```bash
+ {
+
+       "nom": "plat"
+   }
 
 ```
+
 - Réponse :
+
 ```bash
  "message": "catégorie Mise à jour avec succès",
 ```
@@ -177,10 +188,10 @@ L'API sera accessible à l'adresse http://localhost:3090
 - Endpoint : /catégories/delete/:id
 - Description : Supprime une catégorie par son ID.
 - Réponse :
+
 ```bash
  "message": "catégorie supprimée avec succès",
 ```
-
 
 ## Tests
 
@@ -206,9 +217,6 @@ npm run lint:fix
 npm run format
 ```
 
-
-
 ## Auteurs
 
 - **[Fatimata Aliou Sall](https://github.com/fatimata-sall)** - Développeuse Full Stack
-

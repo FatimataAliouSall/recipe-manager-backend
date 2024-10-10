@@ -3,7 +3,7 @@ import Category from '../src/models/CategorieModel.js';
 
 describe('Recipe tests', () => {
   let recipeId = null;
-  let categorie_id = 1; 
+  let categorie_id = 1;
 
   it('can be created', async () => {
     const recipe = {
@@ -14,13 +14,13 @@ describe('Recipe tests', () => {
     };
     const result = await Recipe.create(recipe);
     recipeId = result.insertId;
-    
+
     const recipeCreated = await Recipe.getById(recipeId);
     expect(recipeId).not.toBeNull();
     expect(recipeCreated).not.toBeNull();
     expect(recipeCreated.title).toBe(recipe.title);
   });
-  
+
   it('cannot be created with invalid data', async () => {
     const recipe = {
       title: null,
@@ -44,7 +44,7 @@ describe('Recipe tests', () => {
   });
 
   it('update a recipe with its category', async () => {
-    expect(recipeId).not.toBeNull(); 
+    expect(recipeId).not.toBeNull();
     const updatedData = {
       title: 'Crêpe mise à jour 1',
       type: 'Dessert',
@@ -53,13 +53,12 @@ describe('Recipe tests', () => {
     };
     const result = await Recipe.update(recipeId, updatedData);
     expect(result.affectedRows).toBe(1);
-  
+
     const updatedRecipe = await Recipe.getById(recipeId);
-    expect(updatedRecipe).not.toBeNull(); 
+    expect(updatedRecipe).not.toBeNull();
     expect(updatedRecipe.title).toBe(updatedData.title);
     expect(updatedRecipe.categorie_id).toBe(updatedData.categorie_id);
   });
-  
 
   it('can delete a recipe', async () => {
     const result = await Recipe.delete(recipeId);

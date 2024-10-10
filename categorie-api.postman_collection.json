@@ -1,98 +1,81 @@
 {
-	"info": {
-		"_postman_id": "da2112b0-ad97-46d9-82af-de37de6e2b2e",
-		"name": "categorie-api",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "38098585"
-	},
-	"item": [
-		{
-			"name": "/categories",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
-		},
-		{
-			"name": "/categories/edit/:id",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \r\n        \"nom\": \"plat\"\r\n    }",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3090/categories/edit/2",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3090",
-					"path": [
-						"categories",
-						"edit",
-						"2"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/categories/delete/:id",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3090/categories/delete/3",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3090",
-					"path": [
-						"categories",
-						"delete",
-						"3"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "/categories/add",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n        \r\n        \"nom\": \"Main\"\r\n    }",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3090/categories/add",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3090",
-					"path": [
-						"categories",
-						"add"
-					]
-				}
-			},
-			"response": []
-		}
-	]
+  "info": {
+    "_postman_id": "da2112b0-ad97-46d9-82af-de37de6e2b2e",
+    "name": "categorie-api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "38098585"
+  },
+  "item": [
+    {
+      "name": "/categories",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "/categories/edit/:id",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \r\n        \"nom\": \"plat\"\r\n    }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3090/categories/edit/2",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3090",
+          "path": ["categories", "edit", "2"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/categories/delete/:id",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3090/categories/delete/3",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3090",
+          "path": ["categories", "delete", "3"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/categories/add",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n        \r\n        \"nom\": \"Main\"\r\n    }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3090/categories/add",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3090",
+          "path": ["categories", "add"]
+        }
+      },
+      "response": []
+    }
+  ]
 }
